@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The God Hand</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #000;
+        color: #fff;
+      }
+
+      header {
+        background-color: #c0392b;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #222;
+        padding: 10px 20px;
+        flex-wrap: wrap;
+      }
+
+      .nav .buttons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .nav button {
+        background-color: #3498db;
+        border: none;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .nav button:hover {
+        background-color: #2980b9;
+      }
+
+      .nav input[type="text"] {
+        padding: 7px 10px;
+        border-radius: 4px;
+        border: 1px solid #555;
+        background-color: #111;
+        color: #fff;
+        min-width: 200px;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 30px auto;
+        background: #111;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+      }
+
+      .game-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 30px;
+        text-align: justify;
+      }
+
+      .game-cover img {
+        max-width: 300px;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+        margin: 0 auto;
+      }
+
+      h2,
+      h3,
+      h4 {
+        color: #f9f9f9;
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .character-section {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .character-section img {
+        max-width: 150px;
+        height: auto;
+        display: block;
+      }
+
+      .character-info {
+        flex: 1;
+      }
+
+      @media (max-width: 600px) {
+        .nav {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+
+        .nav input[type="text"] {
+          width: 100%;
+        }
+
+        .character-section {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .character-section img {
+          margin-bottom: 15px;
+        }
+      }
+
+      .additional-info {
+        max-width: 1000px;
+        margin: 40px auto;
+        background: #111;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        color: #f1f1f1;
+      }
+
+      .additional-info h2 {
+        color: #f9f9f9;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .additional-info p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <header>Seputar God Hand</header>
+
+    <div class="nav">
+      <div class="buttons">
+        <button onclick="goHome()">Home</button>
+        <button onclick="goBack()">Back</button>
+      </div>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Cari karakter..."
+        oninput="searchContent()"
+      />
+    </div>
+
+    <div class="game-cover">
+      <img src="foto/Cover Game.jpg" alt="cover game" />
+    </div>
+
+    <div class="additional-info">
+      <h2>Penjelasan Game God Hand</h2>
+      <div class="game-description">
+        <p>
+          God Hand (ゴッドハンド, Goddo Hando) adalah permainan video action
+          beat 'em up yang dikembangkan oleh Clover Studio dan diterbitkan oleh
+          Capcom untuk konsol permainan PlayStation 2. Permainan ini
+          disutradarai oleh desainer Resident Evil Shinji Mikami, dan dirilis di
+          Jepang dan Amerika Utara pada 2006 dan pada 2007 untuk wilayah PAL;
+          pada 4 Oktober 2011, permainan ini dirilis ulang untuk PlayStation 3
+          sebagai title dapat diunduh di PlayStation Network. Mikami ini adalah
+          untuk menciptakan sebuah permainan Aksi yang ditujukan untuk "
+          hardcore gamers " intermixed dengan sejumlah besar comic relief.
+          Permainan ini menerima respon positif dari kritikus dan dirilis di
+          Jepang terjual wajar. Ini adalah permainan video terakhir Clover
+          Studio.
+        </p>
+      </div>
+    </div>
+
+    <div class="additional-info">
+      <h2>Tingkat Kesulitan</h2>
+      <p>
+        God Hand memiliki sistem level yang terus berubah tergantung dari gaya
+        bermain playernya.Semakin baik playerrnya bermain (tanpa menerima damage
+        dan memberikan damage beruntun ke lawannya) maka akan lebih cepat naik
+        level dan mendapatkan hadiah seperti gold lebih banyak.urutan levelnya
+        di mulai dari level 1 sampai level DIE
+      </p>
+      <div class="game-info">
+      <h2>Penjelasan Level</h2>
+      <li>Level 1-Musuh menjadi sangat lemah</li>
+      <li>Level 2-Musuh mulai menangkis serangan</li>
+      <li>Level 3-Musuh mulai sedikit agresif</li>
+       <li> Level DIE-Musuh menjadi sangat agresif dan meningkatkan damage serangan</li>
+      </div>
+    </div>
+
+    <div class="additional-info">
+      <h2>Plot</h2>
+      <p>
+        Dalam latar cerita game, ada Malaikat yang jatuh menjadi Raja Iblis
+        Angra, dia mememrintahkan pasukan iblisnya menginvasi dunia. Namun,
+        seorang pria yang memegang kekuatan Tuhan dalam pelukannya mengalahkan
+        Angra, mengirimnya ke pengasingan sekali lagi. Pria itu kemudian diberi
+        gelar "God Hand" oleh orang-orang yang dia selamatkan. Sebuah klan
+        manusia yang didirikan untuk melindungi God Hand seperti yang dikatakan
+        bahwa siapa pun yang memilikinya akan "mampu menjadi dewa atau iblis".
+        Tokoh utama adalah Gene, seorang petarung berusia 23 tahun yang memiliki
+        salah satu God Hand, yang dicari oleh sekelompok iblis. Meskipun dia
+        blak-blakan dan macho, dia memiliki perasaan yang tajam Keadilan. Gene
+        ditemani oleh Olivia, seorang keturunan klan GodHand berusia 19 tahun
+        yang pernah melindungi God Hand. Setelah Azel membunuh keluarganya, dia
+        melarikan diri dengan salah satu God Hand, mencangkokkannya ke Gene saat
+        bertemu dengannya ketika dia menyelamatkannya dari iblis yang mencoba
+        mengambil God Hand darinya. Penjahat utama adalah Four Devas, sebuah
+        kelopok iblis yang berusaha membangkitkan Angra untuk menguasai dunia.
+        Anggotanya termasuk pemimpin Belze, petugas pecandu cerutu Elvis,
+        pemimpin sirkus Shannon dan Azel, juga disebut "Devil Hand", seorang
+        manusia yang juga memiliki salah satu dari God Hand dan sebelumnya
+        bergabung dengan para Iblis untuk mencapai tujuannya sendiri. Permainan
+        ini menampilkan sejumlah musuh kecil yang berulang kali ditemui Gene,
+        termasuk sepasang saudara kembar yang sangat flamboyan; trio yang
+        bertanggung jawab untuk memotong lengan asli Gene; seekor gorila
+        mengenakan lucha libre topeng dan pakaian gulat; sebuah prajurit android
+        yang dikirim oleh Belze dua kali untuk menghentikan Gene; dua orang
+        manusia rock duo yang awalnya adalah musisi bercita-cita tinggi yang
+        menjual jiwa mereka kepada iblis dengan imbalan kekuasaan; dan
+        sekelompok cebol berpakaian Super Sentai-Gaya pakaian dengan Kartu remi
+        emblem di kostum mereka. Hampir semua pertempuran diungkapkan oleh
+        lelucon dan dialog lucu. Setelah Gene mengalahkan Azel di Menara Angra,
+        Angra terbangun dari dalam tubuh Azel; Azel kemudian merobek tangan
+        kirinya lalu memberikan God Hand dan mempercayakannya kepada Gene,
+        karena dia tidak ingin dikendalikan oleh Angra. Sekarang dengan kedua
+        God Hand, Gene mengalahkan Angra dan menyelamatkan Olivia.
+      </p>
+    </div>
+
+    <div class="container" id="content">
+      <div class="game-info">
+        <h2>Pengenalan Karakter Game God Hand dan Latar Belakangnya</h2>
+      </div>
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Gene</h3>
+          <p>
+            Gene adalah karakter utama yang memiliki kekuatan God Hand di tangan
+            kanannya. Dia ditemani Olivia dalam perjalanannya mengusir
+            kegelapan.
+          </p>
+          <h4>Latar Belakang Gene</h4>
+          <p>
+            Dulunya Gene hanya seorang petarung jalanan namun suatu hari ia
+            melihat Olivia dan ingin menylamatkannya namun Gene harus kehilangan
+            tangan kanannya demi menyelamatkan Olivia dari serangan iblis, lalu
+            dia diberikan kekuatan tangan dewa. Segel yang ada di tangankananya
+            berfungsi untuk menahan kekuatan penuh God Hand.
+          </p>
+        </div>
+        <img src="foto/karakter utama.webp" alt="Gene" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Olivia</h3>
+          <p>
+            Olivia adalah satu-satunya yang selamat dari klan God Hand. Dia
+            memberikan tangan kanan God Hand kepada Gene.
+          </p>
+          <h4>Latar Belakang Olivia</h4>
+          <p>
+            Dia dijodohkan dengan Azel, namun dikhianati. Kini dia membantu Gene
+            untuk melawan kejahatan.
+          </p>
+        </div>
+        <img src="foto/oliv.webp" alt="Olivia" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Azel</h3>
+          <p>
+            Musuh utama Gene yang menyebut dirinya Devil Hand. Dia menggunakan
+            tangan kiri God Hand untuk kejahatan.
+          </p>
+          <h4>Latar Belakang Azel</h4>
+          <p>
+            Saat dijodohkan dengan Olivia Azel mencuri tangan kiri God Hand,lalu
+            dia membunuh klannya sendiri dan bergabung dengan organisasi jahat
+            yang bernama Four Devas
+          </p>
+        </div>
+        <img src="foto/Devil Hand.webp" alt="Azel" />
+      </div>
+      <p class="game-info">
+       <strong>DIKARENAKAN SHINJI MIKAMI TIDAK MEMBUAT LATAR BELAKANG UNTUK FOUR DEVAS SAYA HANYA AKAN MEMBERI TAHU TENTANG FINAL FORMNYA</strong>
+      </p>
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Elvis</h3>
+          <p>
+            Elvis adalah salah satu anggota dari Four Devas dia adalah Boss
+            pertama yang akan di lawan oleh pemain,sebelum melawan Elvis pemain
+            harus mencari tiga kunci di kediaman Elvis
+          </p>
+          <h4><strong>Form</strong></h4>
+          <p>
+            Elvis memiliki form iblis yang memiliki mulut besar di perutnya dan
+            di kedua tangannya yang dapat menyemburkan api
+          </p>
+
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 15px;
+              margin-top: 15px;
+            "
+          >
+            <img
+              src="foto/elvis final form.webp
+                    "
+              alt="Final Form Elvis"
+              style="max-width: 150px; height: auto; border-radius: 6px"
+            />
+            <p style="margin: 0; font-size: 14px">
+              Ini adalah final form dari Elvis-memiliki damage yang sangat besar
+            </p>
+          </div>
+        </div>
+
+        <img src="foto/elvis.webp" alt="Bezel" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Shannon</h3>
+          <p>
+            Shannon satu-satunya wanita dari Four Devas dia sangat suka membuat
+            manusia menjadi peliharaannya
+          </p>
+          <h4><strong>Form</Form></strong></h4>
+          <p>
+            Shannon memiliki form setengah badan bagian bawahnya berubah menjadi
+            entitas yang aneh, memiliki bentuk kaki seperti T-Rex dan kepala
+            seperti tanaman karnivora
+          </p>
+
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 15px;
+              margin-top: 15px;
+            "
+          >
+            <img
+              src="foto/shannon final form.webp"
+              alt="Final Form Shannon"
+              style="max-width: 150px; height: 100; border-radius: 6px"
+            />
+            <p style="margin: 0; font-size: 14px">
+              Ini adalah bentuk akhir Shannon, gabungan tubuh wanita dan monster
+              menyerupai tanaman pemakan daging.
+            </p>
+          </div>
+        </div>
+        <img src="foto/Shannon.webp" alt="Shannon" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Bezel</h3>
+          <p>Bezel adalah pemimpin dari Four Devas</p>
+
+          <h4><strong>Form</strong></h4>
+          <p>
+            Bezel memiliki damage lebih besar daripada Elvis dan Shanon saat
+            pertama kali bertemu, dia akan langsung menggunakan final formnya
+            atau wujud iblisnya yaitu Lalat dengan wajah manusia.
+          </p>
+
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 15px;
+              margin-top: 15px;
+            "
+          >
+            <img
+              src="foto/bezel final form.webp"
+              alt="Final Form Bezel"
+              style="max-width: 150px; height: auto; border-radius: 6px"
+            />
+            <p style="margin: 0; font-size: 14px">
+              Ini adalah bentuk akhir Bezel dalam wujud iblis — seekor lalat
+              dengan wajah manusia. Bentuk ini muncul saat pertemuan pertama
+              dengan pemain.
+            </p>
+          </div>
+        </div>
+
+        <img src="foto/belze.webp" alt="Bezel" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Angra</h3>
+          <p>
+            Angra adalah Boss terakhir di game God Hand selama ini dia
+            menjadikan Azel sebagai wadah ke bangkitannya
+          </p>
+          <h4>Latar Belakang Angra</h4>
+          <p>
+            Angra adalah malaikat yang jatuh dari surga karena kesombongannya
+            dia di buang ke neraka yang dimana membuatnya menjadi penguasa atau
+            raja iblis.Dia lah penyebab para iblis datang kedunia dan dia ingin
+            membalaskan dendamnya ke pada suatu entitas yang bernama God karena
+            sudah membuangnya dari surga
+          </p>
+        </div>
+        <img src="foto/finalboss villain utama.webp" alt="Anggra" />
+      </div>
+
+      <div class="game-info">
+        <h2>Mini Boss</h2>
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Mr Gold & Mr Silver</h3>
+          <p>
+            Mr Gold & Mr. Silver (金さん＆銀さん Kin-san & Gin-san) adalah dua
+            antagonis minor di God Hand. Dua pria homoseksual yang bekerja di
+            bawah Elvis sebagai pemimpin kelompok tari yang bermusuhan. Mereka
+            adalah bos pertama yang ditemui dalam permainan
+          </p>
+        </div>
+        <img src="foto/god silver.webp" alt="Mr Gold & Mr Silver" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>The Mad Midged Five</h3>
+          <p>
+            Lima pria cebol berpakaian ala Super Sentai (seperti Power Rangers)
+            dengan warna berbeda.Mereka sering dianggap sebagai mini boss fan
+            favorite karena keunikannya, dan mereka mewakili gaya khas God Hand:
+            campy, over-the-top action dengan sentuhan komedi aneh.Setiap warna
+            memiliki simbol kartu.
+            <li>Merah menggunakan simbol J (Joker)</li>
+            <li>Biru menggunakan simbol Spade (Sekop)</li>
+            <li>Kuning menggunakan simbol Diamond (Wajik)</li>
+            <li>Hijau menggunakan simbol Club (Keriting)</li>
+            <li>Pink menggunakan simbol Heart (Hati)</li>
+          </p>
+        </div>
+        <img src="foto/five sentai.jfif" alt="The Mad MIdged Five" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Dr Ion</h3>
+          <p>
+            Dr Ion adalah sebuah Robot ilmuwan yang di rancang untuk mengalahkan
+            Gene Dr Ion memiliki tiga tipe serangan berbeda.Serangan pertama
+            hanya menggunakan tangan kosong yang bisa menyetrum pemain,serangan
+            kedua mengubah tangan kanannya menjadi bor,dan serangan ketiga
+            mengubah tangan kanannya menjadi peluncur roket. Dr Ion memiliki dua
+            form yang dimana form keduanya menggunakan baterai agar Dr Ion tidak
+            kehabisan tenaga saat bertarung
+          </p>
+        </div>
+        <img src="foto/dr ion2.jfif" alt="Dr Ion" />
+        <img src="foto/drion1.jfif" alt="Dr Ion 2" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Gorilla Mask</h3>
+          <p>
+            Gorilla Mask (ゴリラーマスク Gorirāmasuku) adalah teka-teki yang
+            dibungkus misteri yang dibungkus enigma, tapi siapa pun lawan
+            misterius ini, dia menonjol bahkan di antara banyak bos aneh yang
+            dilawan di game God Hand.Dia memilikki gaya seperti pegulat
+            profesional
+          </p>
+        </div>
+        <img src="foto/monkey.webp" alt="Gorilla Mask" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Trhee Evil Stooges</h3>
+          <p>
+            Trhee Evil Stooges ini beranggotakan Bruce,Felix,dan Conchita.Bruce
+            dan Felix adalah iblis yang memotong tangan kanan Gene saat
+            menyelamatkan Olivia dan Conchita adalah wanita yang berperan
+            sebagai pemimpinnya.Mereka memiliki gaya layaknya pemain circus
+          </p>
+        </div>
+        <img src="foto/trio lawak.webp" alt="Trio Demon" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Great Sensei</h3>
+          <p>
+            Great Sensei adalah iblis yang memiliki gaya bertarung ala samurai
+            dia memiliki kemampuan menggandakan diri saat HPnya rendah
+          </p>
+        </div>
+        <img src="foto/sensei.jfif" alt="Great Sensei" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Ravael & Debussy</h3>
+          <p>
+            Ravel & Debussy (ラヴェルとドビュッシー Ravu~Eru to Dobyusshī)
+            adalah sepasang musisi jahat yang asal usulnya tidak diketahui yang
+            muncul untuk menghentikan Gene mencapai Elvis dan mungkin juga
+            mengambil tangan Kanan God Hand darinya.
+          </p>
+        </div>
+        <img src="foto/band.webp" alt="Ravael&debussy" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Aniki</h3>
+          <p>
+            Aniki (兄貴 Aniki) adalah kakak laki-laki Ravel, dan sub-bos
+            tersembunyi di God Hand. Aniki hanya akan muncul jika pemain
+            memeriksa Ravel setelah mengalahkannya dan Debussy, dan mulai
+            menyerang Gene untuk membalas kekalahan saudaranya
+          </p>
+        </div>
+        <img src="foto/anikki.webp" alt="Aniki" />
+      </div>
+
+      <div class="character-section">
+        <div class="character-info">
+          <h3>Specters</h3>
+          <p>
+            Specters (悪霊 Akuryō) adalah spesies yang ditampilkan dalam God
+            Hand, dan merupakan musuh elit yang akan muncul setelah mengalahkan
+            musuh tertentu. Specters, tidak seperti musuh lainnya, tidak ditemui
+            melalui cara biasa, dan sebaliknya akan bangkit dari musuh yang
+            tumbang, baik itu peluang acak atau musuh tertentu. Ada empat jenis
+            specters yang berbeda, yang semuanya sangat kuat, dan semuanya
+            memainkan peran utama dalam permainan. Semuanya memiliki jumlah HP
+            yang tinggi, ditunjukkan oleh health bar khusus mereka. Specters
+            ini, selain memiliki kekuatan yang luar biasa, mereka dikenal karena
+            kecepatan mereka yang tak tertandingi, mereka memiliki skill unik
+            "flash step" untuk menempuh jarak yang jauh alih-alih berjalan atau
+            berlari seperti musuh normal. Specters mampu melangkah cepat untuk
+            melepaskan diri dari serangan Gene jika diserang dengan serangan
+            counter attack, serta bergerak di belakang Gene dan mencoba
+            menangkapnya. Meskipun mereka membutuhkan refleks yang lebih tinggi
+            dan bahkan rasa prediksi terhadap gerakan dan serangan mereka,
+            counter attack, kelemahan mereka, secara alami memungkinkan
+            kerusakan besar untuk ditangani. Spectre juga memiliki animasi
+            kematian yang unik, di mana mereka berubah menjadi hitam pekat lalu
+            hancur dan meledak saat dikalahkan, dan biasanya meninggalkan hadiah
+            besar, yang dapat berkisar dari sejumlah besar emas, buah penyembuh
+            tinggi, atau bahkan Kartu Teknik.
+          </p>
+        </div>
+        <img src="foto/purple.webp" alt="Spectre" />
+        <img src="foto/green.webp" alt="Spectre" />
+        <img src="foto/blue.webp" alt="Spectre" />
+      </div>
+    </div>
+
+    <div class="additional-info">
+      <h2>Fakta Tambahan Seputar God Hand</h2>
+      <p>
+        Meskipun <em>God Hand</em> tidak meraih kesuksesan komersial besar saat
+        perilisannya, game ini justru menjadi cult classic karena gayanya yang
+        nyeleneh, sistem bertarung bebas yang kompleks, serta humornya yang
+        absurd. Banyak pemain menyebut game ini sebagai salah satu pengalaman
+        aksi yang paling unik dan “gila” di era PlayStation 2.
+      </p>
+      <p>
+        Clover Studio — developer game ini — dibubarkan tak lama setelah
+        perilisan. Beberapa anggotanya kemudian mendirikan PlatinumGames, studio
+        di balik game seperti <strong>Bayonetta</strong> dan
+        <strong>Metal Gear Rising</strong>.
+      </p>
+      <p>
+        Hingga kini, God Hand dianggap sebagai salah satu game tersulit dan
+        terlucu yang pernah dibuat Capcom.God Hand memiliki outro yang
+        menarik,dimana semua karakter dari game tersebut menari bersama sama.
+      </p>
+    </div>
+    <div class="additional-info">
+      <h2>Kombinasi</h2>
+      <p>
+        Dalam God Hand ada beberapa kombinasi tehnik yang dapat di gunakan untuk
+        melawan para iblis.Berikut rekomendasi tehnik kombinasinya
+      </p>
+      <li>Jab of God</li>
+      <li>Godly Straight</li>
+      <li>God Hook</li>
+      <li>Chin Music</li>
+      <li>Godly Chop</li>
+      <li>God Uppercut</li>
+      <p></p>
+      <p>
+        Kombinasi di atas dapat di gunakan saat pemain berhasil menyelesaikan
+        game God Hand,namun masih ada kombinasi untuk awal game
+      </p>
+      <div>
+        <li>Sugar Gene Combo</li>
+        <li>Straight</li>
+        <li>Hook</li>
+        <li>Short Uppercut</li>
+        <li>Punch Rush</li>
+        <li>Stinging Bee</li>
+      </div>
+      <p></p>
+      <div>
+        <li>Jab</li>
+        <li>Chin Music</li>
+        <li>Straight</li>
+        <li>Hook</li>
+        <li>Short Uppercut</li>
+        <li>Punch Rush</li>
+      </div>
+      <p></p>
+      <div>
+        <li>Straight</li>
+        <li>Jab</li>
+        <li>Right Hook</li>
+        <li>Uppercut</li>
+        <li>Tripple Side Kick</li>
+        <li>Spinning Backfist</li>
+      </div>
+      <p></p>
+      <p>
+        Kombinas ini dapat di gunakan oleh para pemain yang baru bermain
+        God Hand
+      </p>
+    </div>
+
+    <div class="additional-info">
+      <h2>Roullete</h2>
+      <p>
+        Dalam game God Hand terdapat tehnik yanf memiliki damage yang sangat
+        besar yaitu Roullete.Roullete dapat di gunakan saat para pemain
+        memilikki Orb jumlah Orb dapat mengeluarkan beberapa jenis Roullete.
+      </p>
+      <li>Satu Orb dapat mengeluarkan tehnik Roullete berwarna Kuning</li>
+      <li>Dua roullete dapat mengeluarkan tehnik berwarna Ungu</li>
+      <li>Tiga Orb dapat mengeluarkan tehnik berwarna Merah</li>
+      <p></p>
+      <p>
+        Jika Orb pemain hanya ada satu kebanyakan pemain God Hand menggunakan
+        Roullete
+        <li>Ball Buster</li>
+        <li>Chain Yanker</li>
+      </p>
+      <p>
+        Jika pemain memiliki dua Orb kebanyakan pemain akan menggunakan Roullete
+
+        <li>Cressent Kick</li>
+        <li>Home Run God</li>
+        <li>Hundred Fist</li>
+      </p>
+      <p>
+        Jika pemain memiliki tiga Orb biasanya pemain akan menggunakan Roullete
+        <li>Shaolin Blast</li>
+        <li>Double Shaolin Blast</li>
+        <p>Double Shaolin Blast hanya dapat digunakan pada saat melawan Angra
+          karena, saat Angra bangkit dari tubuh Azel, Azel melepaskan tangan kiri God Hand dan memberikannya pada Gene, yang membuat Gene memiliki kekuatan penuh God Hand 
+        </p>
+      </p>
+      <p>
+        Ada dua Roullete yang tidak menggunakan Orb yaitu
+        <li>Grovel</li>
+        <li>Dead Pan</li>
+      </p>
+      <p>
+        Dead Pan hanya bisa digunakan atau di dapatkan di Game God Hand versi
+        Jepang.Kedua roullete ini memiliki fungsi untuk menurunkan level pemain
+        jika para pemain merasa levelnya terlalu sulit.
+      </p>
+    </div>
+
+    <div class="additional-info">
+      <h2>Fanmade</h2>
+      <p>
+        Beberapa penggemar game God Hand membuat modifikasi pada gamenya dan
+        banyak yang memainkan game God Hand yang sudah di modifikasi itu.Ada dua
+        versi game yang sudah dimodifikasi oleh penggemar game God Hand agar
+        lebih susah dan menantang
+      </p>
+      <li>God Hand:Angra Revenge</li>
+      <li>God Hand Undisputted</li>
+    </div>
+
+    <div class="game-info">
+      <footer>
+        Seluruh informasi berasal dari Wikipedia,ChatGPT,Google dan
+        godhandcapcom.fandom.com
+      </footer>
+    </div>
+    <script>
+      function goHome() {
+        window.location.href = "index.html";
+      }
+
+      function goBack() {
+        window.history.back();
+      }
+
+      function searchContent() {
+        const input = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const content = document.getElementById("content");
+        const sections = content.querySelectorAll(".character-section");
+
+        sections.forEach((section) => {
+          const text = section.textContent.toLowerCase();
+          section.style.display = text.includes(input) ? "flex" : "none";
+        });
+      }
+    </script>
+  </body>
+</html>
